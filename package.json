@@ -12,6 +12,10 @@
     "format": "prettier --write .",
     "lint": "eslint src/**/*.ts"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
