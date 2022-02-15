@@ -5,6 +5,9 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "rollup -wc",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
