@@ -4,6 +4,11 @@
 export type Fn<T = void> = (...args: unknown[]) => T
 
 /**
+ * Array Type
+ */
+export type ArrayType<T extends Array<T>> = T extends Array<infer P> ? P : never
+
+/**
  * Constructor
  */
 export type Constructor<T = void> = new (...args: unknown[]) => T
