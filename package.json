@@ -11,6 +11,8 @@
   "scripts": {
     "dev": "rollup -wc",
     "build": "rimraf dist && cross-env NODE_ENV=production rollup -c",
+    "prepublishOnly": "pnpm build",
+    "release": "bump --commit --push --tag && pnpm publish",
     "test": "jest",
     "format": "prettier --write .",
     "lint": "eslint src/**/*.ts"
@@ -51,6 +53,7 @@
   },
   "homepage": "https://github.com/Jackie1210/utils#readme",
   "devDependencies": {
+    "@jsdevtools/version-bump-prompt": "^6.1.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.3",
