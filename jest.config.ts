@@ -14,6 +14,7 @@ const config: Config.InitialOptions = {
       }
     ]
   },
+  collectCoverage: true,
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
   coverageProvider: 'v8',
   coverageReporters: ['text']

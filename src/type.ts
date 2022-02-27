@@ -1,7 +1,7 @@
 /**
  * Fn
  */
-export type Fn<T = void> = (...args: unknown[]) => T
+export type Fn<T = void> = (...args: any[]) => T
 
 /**
  * Array Type
@@ -33,3 +33,8 @@ export type Expect<T extends true> = T
 export type Equal<X, Y> =
   (<T>() => T extends X ? 1 : 2) extends
   (<T>() => T extends Y ? 1 : 2) ? true : false
+
+export type MapKey<T> = T extends Map<infer V, unknown> ? V : never
+
+export type MapValue<T> = T extends Map<string, infer V> ? V : never
+
