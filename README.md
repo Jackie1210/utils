@@ -1,8 +1,7 @@
 ## @clym/utils
 
-<p>
-  <a href="https://www.npmjs.com/package/@clym/utils"><img alt="NPM Status" src="https://img.shields.io/npm/v/@clym/utils.svg?style=flat"></a>
-</p>
+[![Coverage Status](https://img.shields.io/coveralls/github/Jackie1210/utils.svg?style=flat)](https://coveralls.io/github/Jackie1210/utils?branch=master)
+[![NPM Version](https://img.shields.io/npm/v/@clym/utils.svg?style=flat)](https://www.npmjs.com/package/@clym/utils)
 
 ## Install
 ```bash
