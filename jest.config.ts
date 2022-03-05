@@ -14,10 +14,11 @@ const config: Config.InitialOptions = {
       }
     ]
   },
+  coverageDirectory: './coverage',
   collectCoverage: true,
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
   coverageProvider: 'v8',
-  coverageReporters: ['text']
+  coverageReporters: ['text', 'lcov']
 }
 
 export default config
