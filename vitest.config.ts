@@ -8,6 +8,10 @@ export default defineConfig({
     ]
   },
   test: {
-    globals: true
+    globals: true,
+    coverage: {
+      reporter: ['lcov'],
+      reportsDirectory: './coverage'
+    }
   }
 })
