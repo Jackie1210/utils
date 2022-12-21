@@ -1,4 +1,5 @@
-import { objectKeys, objectPick } from '../src/object'
+import { objectKeys, objectPick } from '@/object'
+
 describe('object', () => {
   const o = {
     a: 1,

@@ -1,4 +1,4 @@
-import { camelCase, underscore } from '../src/string'
+import { camelCase, underscore } from '@/string'
 
 describe('test string', () => {
   it('should work with camelCase', () => {

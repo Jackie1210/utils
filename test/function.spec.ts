@@ -1,4 +1,4 @@
-import { sleep, noop } from "../src/function"
+import { sleep, noop } from "@/function"
 
 describe('function', () => {
   it('should work with sleep', async () => {
