@@ -1,4 +1,4 @@
-import { chunk} from '../src/array'
+import { chunk} from '@/array'
 
 describe('array', () => {
   it('should work with chunk', () => {
