@@ -4,38 +4,28 @@ on:
   push:
     branches:
       - master
-      - feat/*
-      - fix/*
   pull_request:
     types: [synchronize, opened, reopened]
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node_version: [14, 16, 18]
-        include:
-          - os: macos-latest
-            node_version: 16
-          - os: windows-latest
-            node_version: 16
-      fail-fast: false
-    name: "Build: node-${{ matrix.node_version }}, ${{ matrix.os }}"
+  linux18:
+    runs-on: ubuntu-latest
+    name: Node 18 + Coverage (Linux)
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2.0.1
+        uses: pnpm/action-setup@v2
         with:
-          version: 6.15.1
+          version: 7.18.1
 
-      - name: Set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v2
+      - name: Set node
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node_version }}
+          node-version: '18'
           cache: "pnpm"
 
       - name: Install deps
@@ -47,6 +37,39 @@ jobs:
       - uses: codecov/codecov-action@v3
         with:
           commit_parent: ${{ github.event.pull_request.head.sha }}
+      
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [14, 16, 18]
+        include:
+          - os: macos-latest
+            node_version: 18
+          - os: windows-latest
+            node_version: 18
+      fail-fast: false
+    name: "Build: node-${{ matrix.node_version }}, ${{ matrix.os }}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.18.1
+
+      - name: Set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: "pnpm"
+
+      - name: Install deps
+        run: pnpm install --registry=https://registry.npmmirror.com/
 
       - name: Build
         run: pnpm build
