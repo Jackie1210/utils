@@ -5,7 +5,9 @@ on:
     branches:
       - master
       - feat/*
+      - fix/*
   pull_request:
+    types: [synchronize, opened, reopened]
 
 jobs:
   build:
@@ -13,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [14, 16]
+        node_version: [14, 16, 18]
         include:
           - os: macos-latest
             node_version: 16
@@ -39,16 +41,12 @@ jobs:
       - name: Install deps
         run: pnpm install --registry=https://registry.npmmirror.com/
       
-      - name: Test
-        run: pnpm test
-
-      - name: Coverage
+      - name: Test with coverage
         run: pnpm coverage
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
+      - uses: codecov/codecov-action@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          commit_parent: ${{ github.event.pull_request.head.sha }}
 
       - name: Build
         run: pnpm build
