@@ -1,10 +1,5 @@
 import { sleep, noop, retry } from "@/function"
 
-const executeAfterTwoHours = (func: any) => {
-  setTimeout(func, 1000 * 60 * 60 * 2) // 2 hours
-}
-
-
 describe('function', () => {
   beforeEach(() => {
     vi.useFakeTimers()
