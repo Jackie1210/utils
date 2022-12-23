@@ -36,7 +36,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "test:CI": "vitest --no-threads",
-    "release": "bump --commit --push --tag && pnpm publish"
+    "release": "bumpp --commit --push --tag && pnpm publish"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.0",
@@ -47,6 +47,7 @@
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
     "@vitest/coverage-c8": "^0.26.0",
+    "bumpp": "^8.2.1",
     "esbuild": "^0.16.10",
     "eslint": "^8.30.0",
     "eslint-define-config": "^1.12.0",
