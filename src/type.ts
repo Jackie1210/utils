@@ -38,3 +38,7 @@ export type MapKey<T> = T extends Map<infer V, unknown> ? V : never
 
 export type MapValue<T> = T extends Map<string, infer V> ? V : never
 
+export type Writable<T> = { -readonly [P in keyof T]: T[P] }
+
+export type DeepWritable<T> = { -readonly [P in keyof T]: DeepWritable<T[P]> }
+
